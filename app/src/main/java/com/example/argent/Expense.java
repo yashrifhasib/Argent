@@ -24,9 +24,14 @@ public class Expense {
     public void setDate(String date) { this.date = date; }
 
     //other methods
-    public double getFinalBalance(double initialBalance, Expense expense) {
-        initialBalance -= expense.getAmount();
-        return initialBalance;
+    public double getFinalBalance(double balance, Expense expense) {
+        balance -= expense.getAmount();
+        return balance;
+    }
+
+    //toString
+    public String toString() {
+        return (this.detail + ", " + this.amount + ", " + this.date);
     }
 
 
