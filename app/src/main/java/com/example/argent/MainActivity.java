@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getIntent() != null) {
-            userBalance = Double.parseDouble(getIntent().getStringExtra("newBalance"));
+        if (this.getIntent() != null) {
+            userBalance = getIntent().getDoubleExtra("newBalance", 2000);
         }
 
         TextView moneyDisplay = findViewById(R.id.textView4);
@@ -55,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
-                startActivity(new Intent(MainActivity.this, NewRecord.class).putExtra("currentBalance", userBalance));
+                Intent i = new Intent(MainActivity.this, NewRecord.class);
+                i.putExtra("currentBalance", userBalance);
+                startActivity(i);
             }
         });
 
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

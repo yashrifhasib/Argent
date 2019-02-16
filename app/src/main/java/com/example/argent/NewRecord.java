@@ -15,14 +15,19 @@ public class NewRecord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.record_new);
 
-        final double currentBalance = Double.parseDouble(getIntent().getStringExtra("currentBalance"));
 
-        final EditText details = (EditText) findViewById(R.id.editText2);
-        final EditText amount = (EditText) findViewById(R.id.editText);
-        final EditText date = (EditText) findViewById(R.id.editText3);
+        final double currentBalance = getIntent().getDoubleExtra("currentBalance", 2000);
+
+        final EditText details = findViewById(R.id.editText2);
+        final EditText amount = findViewById(R.id.editText);
+        final EditText date = findViewById(R.id.editText3);
 
         ImageButton addButton = findViewById(R.id.imageButton);
         addButton.setBackgroundColor(Color.BLACK);
+
+        if (details.getText().toString().length() == 0)
+            details.setError("Details is required");
+
 
         addButton.setOnClickListener( new View.OnClickListener() {
             @Override
