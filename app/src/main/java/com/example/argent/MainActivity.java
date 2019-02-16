@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void CreateNew(View view)
+    {
+        Intent intent = new Intent (this, NewRecord.class);
+        startActivity(intent);
+    }
 
 
     @Override
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
-                startActivity(new Intent(MainActivity.this, NewRecord.class));
+                startActivity(new Intent(view.getContext(), NewRecord.class));
             }
         });
 
@@ -58,6 +63,4 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
-
 }

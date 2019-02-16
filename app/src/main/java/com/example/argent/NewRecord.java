@@ -1,5 +1,6 @@
 package com.example.argent;
 
+import java.time.LocalDate;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -32,13 +33,12 @@ public class NewRecord extends AppCompatActivity {
         final EditText date = (EditText) findViewById(R.id.editText3);
         final EditText placeOfPurchase = (EditText) findViewById(R.id.editText4);
 
-
         ImageButton addButton = findViewById(R.id.imageButton);
         addButton.setBackgroundColor(Color.BLACK);
 
 
        final Spinner spinner = findViewById(R.id.spinner);
-        String[] selections = {"Not a recurring expense", "Monthly", "Annually" };
+        String[] selections = {"Not a recurring expense", "Monthly", "Annually"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, selections);
         spinner.setAdapter(adapter);
 
