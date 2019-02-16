@@ -42,13 +42,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getIntent() != null) {
+            userBalance = Double.parseDouble(getIntent().getStringExtra("newBalance"));
+        }
+
+        TextView moneyDisplay = findViewById(R.id.textView4);
+        moneyDisplay.append("My Money = $" + userBalance);
+
         ImageButton addButton = findViewById(R.id.floatingActionButton2);
         addButton.setBackgroundColor(Color.BLACK);
 
         addButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
-                startActivity(new Intent(MainActivity.this, NewRecord.class));
+                startActivity(new Intent(MainActivity.this, NewRecord.class).putExtra("currentBalance", userBalance));
             }
         });
 
