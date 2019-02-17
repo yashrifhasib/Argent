@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     public double userBalance;
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 //boo
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    mTextMessage.setText("Settings");
                     return true;
             }
             return false;
@@ -47,7 +53,22 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        if(NewRecord.getExpenses()!=null) {
+            RecyclerView();
+        }
         configureNewRecord();
+
+    }
+
+
+    public void RecyclerView()
+    {
+        recyclerView= (RecyclerView) findViewById(R.id.recycledList);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new RecyclerViewAdapter(NewRecord.getExpenses(),this);
+        recyclerView.setAdapter(mAdapter);
     }
 
     public void configureNewRecord()
