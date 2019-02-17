@@ -76,4 +76,34 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <string name="expense_history">Expense History</string>
+    <string name="default_is_current_day">default is current day</string>
+    <string name="new_expense">New Expense</string>
+    <string name="recurring_expense">Recurring Expense?</string>
+    <string name="place_of_purchase">Place of Purchase</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="item_purchased">Item Purchased</string>
+    <string name="argent">Argent</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="title_activity_sign_up">Sign in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="pick_date">Pick date</string>
 </resources>
