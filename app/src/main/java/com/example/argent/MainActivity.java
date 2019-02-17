@@ -37,30 +37,29 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void CreateNew(View view)
-    {
-        Intent intent = new Intent (this, NewRecord.class);
-        startActivity(intent);
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        configureNewRecord();
+    }
+
+    public void configureNewRecord()
+    {
         ImageButton addButton = findViewById(R.id.floatingActionButton2);
         addButton.setBackgroundColor(Color.BLACK);
 
         addButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
-                startActivity(new Intent(view.getContext(), NewRecord.class));
+                startActivity(new Intent(MainActivity.this, NewRecord.class));
             }
         });
-
-
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 }
