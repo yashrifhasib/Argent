@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecyclerViewAdapter(NewRecord.getExpenses(),this);
+        mAdapter = new RecyclerViewAdapter(NewRecord.getExpenses());
         recyclerView.setAdapter(mAdapter);
     }
 

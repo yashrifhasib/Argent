@@ -110,7 +110,7 @@ public class NewRecord extends AppCompatActivity {
 
             }
         });
-       // loadData();
+        loadData();
         configureFinishNew();
     }
 
@@ -132,23 +132,19 @@ public class NewRecord extends AppCompatActivity {
         boolean cancel= false;
         View currentView= null;
         //IF any of these are empty then WE DO BIGGO ERROR
-        if(TextUtils.isEmpty(itemPurchased.getText().toString()))
-        {
-            itemPurchased.setError(getString(R.string.error_field_required));
-            itemPurchased.requestFocus();
-            cancel=true;
-            currentView=itemPurchased;
-        }else{
-            cancel=false;
-        }
-        if(TextUtils.isEmpty(amount.getText()))
-        {
-            amount.setError(getString(R.string.error_field_required));
-            amount.requestFocus();
-            cancel=true;
-            currentView=amount;
-        }else{
-            cancel=false;
+        while(TextUtils.isEmpty(itemPurchased.getText().toString()) || TextUtils.isEmpty(amount.getText())) {
+            if (TextUtils.isEmpty(itemPurchased.getText().toString())) {
+                itemPurchased.setError(getString(R.string.error_field_required));
+                itemPurchased.requestFocus();
+                cancel = true;
+                currentView = itemPurchased;
+            }
+            if (TextUtils.isEmpty(amount.getText())) {
+                amount.setError(getString(R.string.error_field_required));
+                amount.requestFocus();
+                cancel = true;
+                currentView = amount;
+            }
         }
         if(TextUtils.isEmpty(dateText.getText().toString()))
         {
@@ -161,22 +157,15 @@ public class NewRecord extends AppCompatActivity {
             recurringCharge.setText("Not a recurring expense");
         }
 
-        expenses = new ArrayList<>();
 
-        if(cancel)
-        {
-            currentView.requestFocus();
-
-        }else {
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   // saveData();
-                    setCurrentExpense(new Expense(itemPurchased.getText().toString(), Double.parseDouble(amount.getText().toString()), dateText.getText().toString(), spinner.getSelectedItem().toString()));
+                    saveData();
+                    expenses.add(new Expense(itemPurchased.getText().toString(), Double.parseDouble(amount.getText().toString()), dateText.getText().toString(), spinner.getSelectedItem().toString()));
                     startActivity(new Intent(NewRecord.this, MainActivity.class));
                 }
             });
-        }
     }
 
     private void saveData()
